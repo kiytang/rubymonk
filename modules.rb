@@ -26,3 +26,76 @@ end
 
 puts Gym.new.push_ups
 puts Dojo.new.push_ups
+
+
+
+#Hierarchy
+#module is the superclass of class
+module Warmup
+end
+
+puts Warmup.class
+puts Class.superclass
+puts Module.superclass
+
+# Module
+# Module
+# Object
+
+
+#Module Practice
+#note perimeter of both square and rectangle is calculated by summimg up all sides
+#use inject to sum.
+
+module Perimeter
+	def perimeter
+		sides.inject(0){ |sum, side| sum + side }
+	end
+end
+
+class Rectangle
+	include Perimeter
+	
+	def initialize(length, breadth)
+		@length = length
+		@breadth = breadth
+	end
+
+	def sides
+		[@length, @breadth, @length, @breadth]
+	end
+end
+
+class Square
+	include Perimeter
+	
+	def initialize(side)
+		@side = side
+	end
+
+	def sides
+		[@side, @side, @side, @side]	
+	end
+end
+
+puts Rectangle.new(2,3).perimeter
+puts Rectangle.new(5,10).perimeter
+puts Square.new(5).perimeter
+puts Square.new(15).perimeter
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
